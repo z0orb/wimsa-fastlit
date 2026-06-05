@@ -1,0 +1,22 @@
+meta {
+  name: Update Product
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{base_url}}/api/v1/products/1
+  body: json
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+body:json {
+  {
+    "stock_quantity": 75,
+    "min_stock_level": 15
+  }
+}

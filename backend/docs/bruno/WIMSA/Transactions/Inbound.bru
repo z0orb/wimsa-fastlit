@@ -1,0 +1,24 @@
+meta {
+  name: Inbound Transaction
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/v1/transactions/inbound
+  body: json
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+body:json {
+  {
+    "product_id": 1,
+    "quantity": 20,
+    "reference": "PO-2024-001",
+    "notes": "Restock dari supplier A"
+  }
+}

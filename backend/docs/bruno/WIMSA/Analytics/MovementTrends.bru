@@ -1,0 +1,14 @@
+meta {
+  name: Movement Trends
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/api/v1/analytics/movement-trends
+  body: none
+}
+
+headers {
+  Authorization: Bearer {{auth_token}}
+}

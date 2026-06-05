@@ -1,0 +1,14 @@
+meta {
+  name: List Adjustments
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}/api/v1/adjustments?skip=0&limit=100
+  body: none
+}
+
+headers {
+  Authorization: Bearer {{auth_token}}
+}

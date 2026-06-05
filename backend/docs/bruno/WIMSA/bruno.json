@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "name": "WIMSA",
+  "type": "collection",
+  "variables": [
+    {
+      "name": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "name": "auth_token",
+      "value": ""
+    }
+  ]
+}

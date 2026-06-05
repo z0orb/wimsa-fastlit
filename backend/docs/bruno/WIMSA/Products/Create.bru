@@ -1,0 +1,27 @@
+meta {
+  name: Create Product
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/api/v1/products
+  body: json
+}
+
+headers {
+  Content-Type: application/json
+  Authorization: Bearer {{auth_token}}
+}
+
+body:json {
+  {
+    "name": "Kabel HDMI 2 meter",
+    "sku": "HDMI-2M-001",
+    "category": "Elektronik",
+    "location": "Rak-A1",
+    "stock_quantity": 50,
+    "min_stock_level": 10,
+    "max_capacity": 200
+  }
+}
