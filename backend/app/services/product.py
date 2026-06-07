@@ -1,6 +1,9 @@
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.models.adjustment import StockAdjustment
 from app.models.product import Product
+from app.models.transaction import Transaction
 from app.repositories.product import ProductRepository
 
 
@@ -28,4 +31,16 @@ class ProductService:
         return self.repo.update(id, **data)
 
     def delete(self, id: int) -> bool:
+        product = self.repo.get(id)
+        if not product:
+            return False
+
+        txn_stmt = select(Transaction).where(Transaction.product_id == id)
+        if self.repo.db.scalar(txn_stmt):
+            raise ValueError("Cannot delete product with existing transactions")
+
+        adj_stmt = select(StockAdjustment).where(StockAdjustment.product_id == id)
+        if self.repo.db.scalar(adj_stmt):
+            raise ValueError("Cannot delete product with existing stock adjustments")
+
         return self.repo.delete(id)
