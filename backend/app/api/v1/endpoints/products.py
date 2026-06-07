@@ -70,5 +70,8 @@ def delete_product(
     user: User = Depends(require_role("supervisor")),
 ):
     svc = ProductService(db)
-    if not svc.delete(product_id):
-        raise HTTPException(status_code=404, detail="Product not found")
+    try:
+        if not svc.delete(product_id):
+            raise HTTPException(status_code=404, detail="Product not found")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
