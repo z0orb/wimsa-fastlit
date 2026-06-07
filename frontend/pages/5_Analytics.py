@@ -67,7 +67,7 @@ with col2:
     )
 with col3:
     st_tw(
-        f'<div class="{bg} rounded-xl p-4 text-center border border-{color}-100">'
+        f'<div class="{bg} rounded-xl p-4 text-center border">'
         f'<p class="text-3xl font-bold {text}">{pct:.1f}%</p>'
         f'<p class="text-sm text-gray-500 mt-1">Utilization</p>'
         f'</div>',
