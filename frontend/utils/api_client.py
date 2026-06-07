@@ -34,7 +34,7 @@ def _get(path: str, token: str, params: dict = None):
             f"{BASE_URL}{path}",
             headers=_headers(token),
             params=params,
-            timeout=10,
+            timeout=30,
         )
     except (requests.ConnectionError, requests.Timeout):
         raise APIError(0, "Cannot connect to backend. Is it running?")
@@ -49,7 +49,7 @@ def _post(path: str, body: dict, token: str = None):
             f"{BASE_URL}{path}",
             headers=headers,
             json=body,
-            timeout=10,
+            timeout=30,
         )
     except (requests.ConnectionError, requests.Timeout):
         raise APIError(0, "Cannot connect to backend. Is it running?")
@@ -63,7 +63,7 @@ def _put(path: str, token: str, body: dict):
             f"{BASE_URL}{path}",
             headers=_headers(token),
             json=body,
-            timeout=10,
+            timeout=30,
         )
     except (requests.ConnectionError, requests.Timeout):
         raise APIError(0, "Cannot connect to backend. Is it running?")
@@ -76,7 +76,7 @@ def _delete(path: str, token: str):
         r = requests.delete(
             f"{BASE_URL}{path}",
             headers=_headers(token),
-            timeout=10,
+            timeout=30,
         )
     except (requests.ConnectionError, requests.Timeout):
         raise APIError(0, "Cannot connect to backend. Is it running?")
