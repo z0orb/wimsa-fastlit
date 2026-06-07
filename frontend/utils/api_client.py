@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_URL = os.getenv("BACKEND_URL", "http://localhost:8000/api/v1")
+BASE_URL = os.getenv("BACKEND_URL", "https://wimsa-fastlit-production.up.railway.app")
 
 
 class APIError(Exception):
