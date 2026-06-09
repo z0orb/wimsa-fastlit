@@ -6,7 +6,13 @@ load_dotenv()
 from utils.api_client import APIError, login, get_me
 from utils.auth import is_authenticated, set_session
 
-st.set_page_config(page_title="WIMSA — Login", page_icon="📦", layout="centered")
+st.set_page_config(page_title="WIMSA — Login", page_icon="📦", layout="centered", initial_sidebar_state="collapsed")
+
+# Hide the sidebar and its toggle button entirely on the login page
+st.markdown(
+    "<style>[data-testid='stSidebar'], [data-testid='collapsedControl'] { display: none; }</style>",
+    unsafe_allow_html=True,
+)
 
 # Already logged in → skip to products
 if is_authenticated():
